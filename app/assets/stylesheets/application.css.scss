@@ -1,0 +1,40 @@
+$font-family-sans-serif: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+#logo {
+    font-size: 26px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    padding: 15px 0
+}
+
+#logo a {
+    color: #2F363E
+}
+
+.link {
+    small {
+        font-size: 14px;
+    }
+}
+#main-container {
+    padding-bottom: 100px;
+
+	.item-row {
+		border-bottom: 1px solid #eeeeee;
+		padding-bottom: 10px;
+	}	
+
+    #content {
+        float: none;
+        .center-block {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }    
+    }
+} 

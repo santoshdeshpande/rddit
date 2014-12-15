@@ -7,8 +7,43 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<nav class="navbar navbar-default navbar-static-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>			
+          <a id='logo' href="/" class="navbar-brand">Rddit</a>
+		</div>
+		<div id="navbar" class="navbar-collapse collapse">
+			<ul class="nav navbar-nav pull-right">
+				<% if user_signed_in? %>
+					<li><a><%= current_user.name %></a></li>
+					<li><%= link_to 'Submit link', new_link_path %></li>
+					<li><%= link_to 'Edit Profile', edit_user_registration_path %></li>
+					<li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+				<% else %>	  
+				    <li><%= link_to 'Sign up', new_user_registration_path %></li>
+				    <li><%= link_to 'Sign in', new_user_session_path %></li>
+				<% end %>				
+			</ul>			
+		</div>
+	</div>
+</nav>
 
-<%= yield %>
+<div id="main-container" class="container">
+	<div id="content" class="col-md-9 center-block">
+	<% flash.each do |name, msg| %>
+		<%= content_tag(:div, msg, class: "alert alert-info") %>
+	<% end %>
+	<%= yield %>	
+	</div>
+</div>
+
+
 
 </body>
 </html>
