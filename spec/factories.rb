@@ -1,5 +1,9 @@
-FactoryGirl.define do  factory :user do
-    
+FactoryGirl.define do  
+
+  factory :user do | u |
+  	sequence(:email) {|n| "email#{n}@santoshs.com"}  
+  	u.password 'password'
+
   end
 
   factory :link do |l|
