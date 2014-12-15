@@ -3,7 +3,22 @@ ENV["RAILS_ENV"] ||= 'test'
 require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'simplecov'
+require 'simplecov-rcov'
 require 'factory_girl_rails'
+require 'devise'
+
+class SimpleCov::Formatter::MergedFormatter
+  def format(result)
+     SimpleCov::Formatter::HTMLFormatter.new.format(result)
+     SimpleCov::Formatter::RcovFormatter.new.format(result)
+  end
+end
+
+SimpleCov.formatter = SimpleCov::Formatter::MergedFormatter
+SimpleCov.start 'rails' do
+  coverage_dir 'coverage/simplecov'
+end
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -49,4 +64,7 @@ RSpec.configure do |config|
   # The different available types are documented in the features, such as in
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
+
+  config.include Devise::TestHelpers, :type => :controller
+
 end

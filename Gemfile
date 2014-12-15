@@ -14,6 +14,8 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
+gem 'devise'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -30,6 +32,8 @@ gem 'rspec-rails', group: :development
 gem 'factory_girl_rails', group: :development
 
 gem 'shoulda-matchers', group: :test
+gem 'simplecov', :require => false, :group => :test
+gem 'simplecov-rcov', '~> 0.2.3', group: :test
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
