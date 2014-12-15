@@ -32,6 +32,8 @@ gem 'rspec-rails', group: :development
 gem 'factory_girl_rails', group: :development
 
 gem 'shoulda-matchers', group: :test
+gem 'simplecov', :require => false, :group => :test
+gem 'simplecov-rcov', '~> 0.2.3', group: :test
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
