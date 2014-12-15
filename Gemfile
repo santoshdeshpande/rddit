@@ -15,6 +15,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer',  platforms: :ruby
 
 gem 'devise'
+gem 'acts_as_votable'
 gem 'bootstrap-sass', '~> 3.2.0.2'
 
 # Use jquery as the JavaScript library

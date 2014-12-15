@@ -3,12 +3,22 @@
   <div class="row clearfix item-row">
     <div class="col-md-9">
       <h3 class='link'>
-        <%= link_to link.title, link %>
+        <%= link_to link.title, link %> (<%= link.vote_count %>)
         <br/>
         <small class="author">Submitted <%= time_ago_in_words(link.created_at) %> by <%= link.user.name %></small>
       </h3>
       <div class="btn-group">
-        <a href="<%= link.url %>" class="btn btn-default btn-sm" target="_blank">Visit Link</a>
+        <a href="<%= link.url %>" class="btn btn-default btn-sm" target="_blank">Visit Link</a>          
+        <%= link_to like_link_path(link), method: :put, class: "btn btn-default btn-sm" do %>
+          <span class="glyphicon glyphicon-chevron-up"></span>
+          Upvote
+          <%= link.upvote_count %>
+        <% end %>
+        <%= link_to dislike_link_path(link), method: :put, class: "btn btn-default btn-sm" do %>
+          <span class="glyphicon glyphicon-chevron-down">
+          Downvote
+          <%= link.downvote_count %>
+        <% end %>
       </div>
     </div>
   </div>
