@@ -123,4 +123,36 @@ RSpec.describe LinksController, :type => :controller do
       end
     end
   end
+
+  describe 'Voting' do
+    before do
+      request.env['HTTP_REFERER'] = 'somewhere'
+      @link_user = FactoryGirl.create(:user)
+      @vote_user = FactoryGirl.create(:user)
+      @link = FactoryGirl.create(:link, user: @link_user)
+      sign_in @vote_user
+    end
+
+    it 'upvotes a link by an user' do
+      put :upvote, :id => @link.id
+      expect(response.status).to eq(302)
+      expect(response).to redirect_to('somewhere')
+      @link.reload
+      expect(@link.vote_count).to eq(1)
+      expect(@link.upvote_count).to eq(1)
+      expect(@link.downvote_count).to eq(0)
+    end
+
+    it 'downvotes a link by an user' do
+      put :downvote, :id => @link.id
+      expect(response.status).to eq(302)
+      expect(response).to redirect_to('somewhere')
+      @link.reload
+      expect(@link.vote_count).to eq(1)
+      expect(@link.upvote_count).to eq(0)
+      expect(@link.downvote_count).to eq(1)
+    end
+
+
+  end
 end

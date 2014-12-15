@@ -1,5 +1,6 @@
 FactoryGirl.define do  
 
+  
   factory :user do | u |
     sequence(:name) {|n| "name#{n}"}  
   	sequence(:email) {|n| "email#{n}@santoshs.com"}  
@@ -15,4 +16,11 @@ FactoryGirl.define do
   factory :invalid_link, parent: :link do | l |
     l.title nil
   end
+
+  factory :comment do |c|
+    sequence(:body) {|n| "random text for the link #{n}"}
+    c.user FactoryGirl.build(:user)
+    c.link FactoryGirl.build(:link)
+  end
+
 end

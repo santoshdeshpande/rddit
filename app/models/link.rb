@@ -2,6 +2,7 @@ class Link < ActiveRecord::Base
   acts_as_votable	
   validates_presence_of :title, :url
   belongs_to :user
+  has_many :comments
 
 
   def vote_count
