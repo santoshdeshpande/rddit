@@ -4,7 +4,6 @@ class Link < ActiveRecord::Base
   belongs_to :user
   has_many :comments
 
-
   def vote_count
   	votes_for.size
   end
