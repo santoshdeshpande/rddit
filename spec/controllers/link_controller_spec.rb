@@ -153,6 +153,22 @@ RSpec.describe LinksController, :type => :controller do
       expect(@link.downvote_count).to eq(1)
     end
 
+    describe 'My Submissions' do
+      before do
+        @user1 = FactoryGirl.create(:user)
+        @user2 = FactoryGirl.create(:user)
+        @link1 = FactoryGirl.create(:link, user: @user1)
+        @link2 = FactoryGirl.create(:link, user: @user1)
+        @link3 = FactoryGirl.create(:link, user: @user2)
+        sign_in @user1
+      end
+
+      it 'should only fetch the logged in users submissions' do 
+        get :my_submissions
+        expect(assigns(:links)).to match_array([@link1,@link2])
+        expect(response).to render_template :index
+      end
+    end
 
   end
 end

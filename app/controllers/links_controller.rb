@@ -75,6 +75,11 @@ class LinksController < ApplicationController
     redirect_to :back
   end
 
+  def my_submissions
+    @links = current_user.links.order('created_at DESC')
+    render :index
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_link

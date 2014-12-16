@@ -3,11 +3,11 @@ Rails.application.routes.draw do
   resources :links do
     member do
       put 'like', to: 'links#upvote'
-      put 'dislike', to: 'links#downvote'
-    end
+      put 'dislike', to: 'links#downvote'      
+    end    
     resources :comments
   end
-
+  get 'submissions', to: 'links#my_submissions'
   root 'links#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
